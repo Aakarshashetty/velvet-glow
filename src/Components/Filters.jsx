@@ -7,28 +7,42 @@ export const Filters = () => {
   } = useData();
 
   return (
-    <section>
-      <div>
-        <input
-          type="checkbox"
-          checked={byWomen}
-          onChange={() => filterDispatcher({ type: "FILTER_BY_WOMEN" })}
-        />
-        <span>Women</span>
-        <input
-          type="checkbox"
-          checked={byMen}
-          onChange={() => filterDispatcher({ type: "FILTER_BY_MEN" })}
-        />
-        <span>Men</span>
-        <input
-          type="checkbox"
-          checked={byMomAndBaby}
-          onChange={() => filterDispatcher({ type: "FILTER_BY_MOMANDBABY" })}
-        />
-        <span>Mom & Baby</span>
+    <div className="filter-panel">
+      <div className="filter-header">
+      <h4>Filters</h4>
+      <button onClick={() => filterDispatcher({ type: "CLEAR_FILTER" })}>
+        clear
+      </button>
       </div>
-      <div>
+      <h4>Category</h4>
+      <div className="filter-checkbox">
+        <label>
+          <input
+            type="checkbox"
+            checked={byWomen}
+            onChange={() => filterDispatcher({ type: "FILTER_BY_WOMEN" })}
+          />
+          <span>Women</span>
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={byMen}
+            onChange={() => filterDispatcher({ type: "FILTER_BY_MEN" })}
+          />
+          <span>Men</span>
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={byMomAndBaby}
+            onChange={() => filterDispatcher({ type: "FILTER_BY_MOMANDBABY" })}
+          />
+          <span>Mom & Baby</span>
+        </label>
+      </div>
+      <h4>Sort By</h4>
+      <div className="filter-radio">
         <input
           type="radio"
           name="price"
@@ -48,6 +62,7 @@ export const Filters = () => {
         />
         High to Low
       </div>
+      <h4>Price</h4>
       <input
         type="range"
         min="100"
@@ -55,10 +70,9 @@ export const Filters = () => {
         onChange={(e) =>
           filterDispatcher({ type: "FILTER_BY_PRICE", payload: e.target.value })
         }
+        className="range"
       />
-      <button onClick={() => filterDispatcher({ type: "CLEAR_FILTER" })}>
-        clear Filters
-      </button>
-    </section>
+     
+    </div>
   );
 };

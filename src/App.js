@@ -6,19 +6,41 @@ import { Cart } from "./pages/Cart/Cart";
 import { Wishlist } from "./pages/Wishlist/Wishlist";
 import { Login } from "./pages/Login/Login";
 import { Header } from "./Components/Header";
+import { RequiresAuth } from "./Components/RequiresAuth";
+import SignUp from "./signup/SignUp";
+import Profile from "./pages/Profile/Profile";
+import Logout from "./pages/Logout/Logout";
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Velvet Glow</h1>
-      <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/products" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/cart"
+          element={
+            <RequiresAuth>
+              <Cart />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <Wishlist />
+            </RequiresAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
+      
     </div>
   );
 }

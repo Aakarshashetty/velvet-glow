@@ -1,13 +1,14 @@
 import { Filters } from "../../Components/Filters";
-import { useCart } from "../../contexts/cart-context";
+import Footer from "../../Components/Footer";
 import { useData } from "../../contexts/data-context";
+import ProductCard from "./ProductCard";
 
+import "./product.css";
 export const Product = () => {
   const {
     productData,
     filterData: { sort, byWomen, byMen, byMomAndBaby, byPrice, search },
   } = useData();
-  const { cartDispatcher, cartData } = useCart();
 
   const getFilteredProducts = () => {
     let filteredProducts = productData.products;
@@ -46,6 +47,9 @@ export const Product = () => {
         ({ category }) => category !== "Women"
       );
     }
+    if (byMen && byWomen && byMomAndBaby) {
+      filteredProducts = productData.products;
+    }
     if (byPrice) {
       filteredProducts = filteredProducts.filter(
         ({ price }) => Number(price) <= byPrice
@@ -61,36 +65,15 @@ export const Product = () => {
 
   return (
     <>
-      <Filters />
-      {getFilteredProducts().map((product) => {
-        const { _id, name, description, image, original_price, price, rating } =
-          product;
-        return (
-          <li
-            key={_id}
-            style={{ listStyle: "none", margin: "10px", border: "1px solid" }}
-          >
-            <img src={image} alt={name} width={200} />
-            <h3>{name}</h3>
-            <p>
-              <span>{original_price}</span>
-              {price}
-            </p>
-            <p>{rating}/5</p>
-            <p>{description}</p>
-            <button
-              onClick={() =>
-                cartDispatcher({ type: "ADD_TO_CART", payload: product })
-              }
-            >
-              {cartData.cartItems.some((product) => product._id === _id)
-                ? "Go to Cart"
-                : "Add to cart"}
-            </button>
-            <button>Add to whishlist</button>
-          </li>
-        );
-      })}
+      <div className="product">
+        <Filters />
+        <div className="product-list">
+          {getFilteredProducts().map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+      <Footer />
     </>
   );
 };

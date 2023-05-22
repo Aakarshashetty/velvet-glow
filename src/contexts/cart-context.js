@@ -1,22 +1,113 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { cartReducer } from "../reducers/cartReducer";
 
 const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
   const [cartData, cartDispatcher] = useReducer(cartReducer, { cartItems: [] });
-  console.log(cartData);
-  useEffect(() => {
-    (async () => {
-      try {
-        const cartData = await axios.get("/api/user/cart");
-        cartData.status === 200 &&
-          cartDispatcher({ type: "GET_CART_DATA", payload: cartData.cart });
-      } catch (e) {}
-    })();
-  }, []);
+
+  const totalCartValue = cartData.cartItems.reduce(
+    (totalPrice, product) =>
+      (totalPrice += Number(product.price) * product.qty),
+    0
+  );
+
+  const cartLength = cartData?.cartItems?.length;
+
+  const addToCart = async (product) => {
+    try {
+      const response = await axios.post(
+        "/api/user/cart",
+        {
+          product,
+        },
+        { headers: { authorization: localStorage.getItem("encodedToken") } }
+      );
+      if (response.status === 200 || response.status === 201) {
+        cartDispatcher({
+          type: "ADD_TO_CART",
+          payload: response.data.cart,
+        });
+      }
+    } catch (e) {
+      console.error("Couldn't able to add product", e);
+    }
+  };
+  const removeFromCart = async (product) => {
+    try {
+      const response = await axios.delete(
+        `/api/user/cart/${product._id}`,
+
+        { headers: { authorization: localStorage.getItem("encodedToken") } }
+      );
+      if (response.status === 200 || response.status === 201) {
+        cartDispatcher({
+          type: "REMOVE_FROM_CART",
+          payload: response.data.cart,
+        });
+      }
+    } catch (e) {
+      console.error("Couldn't able to delete product", e);
+    }
+  };
+  const incrementQunatity = async (product) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${product._id}`,
+        {
+          action: { type: "increment" },
+        },
+        { headers: { authorization: localStorage.getItem("encodedToken") } }
+      );
+      if (response.status === 200 || response.status === 201) {
+        cartDispatcher({
+          type: "INC_QTY",
+          payload: response.data.cart,
+        });
+      }
+    } catch (e) {}
+  };
+  const decrementQuantity = async (product) => {
+    try {
+      if (product.qty > 1) {
+        const response = await axios.post(
+          `/api/user/cart/${product._id}`,
+          {
+            action: { type: "decrement" },
+          },
+          { headers: { authorization: localStorage.getItem("encodedToken") } }
+        );
+        if (response.status === 200 || response.status === 201) {
+          cartDispatcher({ type: "DEC_QTY", payload: response.data.cart });
+        }
+      } else {
+        const response = await axios.delete(
+          `/api/user/cart/${product._id}`,
+
+          { headers: { authorization: localStorage.getItem("encodedToken") } }
+        );
+        if (response.status === 200 || response.status === 201) {
+          cartDispatcher({
+            type: "REMOVE_FROM_CART",
+            payload: response.data.cart,
+          });
+        }
+      }
+    } catch (e) {}
+  };
   return (
-    <CartContext.Provider value={{ cartDispatcher, cartData }}>
+    <CartContext.Provider
+      value={{
+        cartDispatcher,
+        addToCart,
+        removeFromCart,
+        incrementQunatity,
+        decrementQuantity,
+        totalCartValue,
+        cartData,
+        cartLength,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
