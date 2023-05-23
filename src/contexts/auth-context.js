@@ -3,7 +3,11 @@ import { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const getLoginData = async (userEmail, userPassword) => {
+  const [userData, setUserData] = useState(localStorage?.user);
+  const getLoginData = async (
+    userEmail,
+    userPassword,
+  ) => {
     try {
       const creds = {
         email: userEmail,
@@ -13,8 +17,10 @@ export const AuthContextProvider = ({ children }) => {
         method: "POST", // or 'PUT'
         body: JSON.stringify(creds),
       });
-      const { encodedToken } = await response.json();
+      const { foundUser,encodedToken } = await response.json();
       localStorage.setItem("encodedToken", encodedToken);
+      localStorage.setItem("user", JSON.stringify({user:foundUser}));
+      setUserData(foundUser)
     } catch (e) {}
   };
   const addUserData = async ({ firstName, lastName, email, password }) => {
@@ -22,20 +28,29 @@ export const AuthContextProvider = ({ children }) => {
       const userData = {
         email,
         firstName,
-        lastName,
-        password,
       };
 
       const response = await fetch("/api/auth/signup", {
         method: "POST", // or 'PUT'
         body: JSON.stringify(userData),
       });
-      const {encodedToken} = await response.json();
-      localStorage.setItem("encodedToken",encodedToken)
+      const { encodedToken,createdUser } = await response.json();
+      localStorage.setItem("encodedToken", encodedToken);
+      localStorage.setItem("user", JSON.stringify({user:createdUser}));
+      setUserData(createdUser)
     } catch (e) {}
   };
   return (
-    <AuthContext.Provider value={{ getLoginData, isLoggedIn, setIsLoggedIn,addUserData }}>
+    <AuthContext.Provider
+      value={{
+        getLoginData,
+        isLoggedIn,
+        setIsLoggedIn,
+        addUserData,
+        userData,
+        setUserData,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

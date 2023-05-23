@@ -2,7 +2,7 @@ import { Filters } from "../../Components/Filters";
 import Footer from "../../Components/Footer";
 import { useData } from "../../contexts/data-context";
 import ProductCard from "./ProductCard";
-
+import { v4 as uuid } from "uuid";
 import "./product.css";
 export const Product = () => {
   const {
@@ -69,7 +69,7 @@ export const Product = () => {
         <Filters />
         <div className="product-list">
           {getFilteredProducts().map((product) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} key={uuid()} />
           ))}
         </div>
       </div>

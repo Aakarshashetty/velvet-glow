@@ -10,6 +10,7 @@ import { RequiresAuth } from "./Components/RequiresAuth";
 import SignUp from "./signup/SignUp";
 import Profile from "./pages/Profile/Profile";
 import Logout from "./pages/Logout/Logout";
+import ProductDetails from "./pages/ProductPage/ProductDetails";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
       </Routes>
       
     </div>

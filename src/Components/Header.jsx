@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useData } from "../contexts/data-context";
 
 import "./styles.css";
@@ -9,28 +9,34 @@ import { ImCart } from "react-icons/im";
 export const Header = () => {
   const { filterDispatcher } = useData();
   const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  const searchFilterHandler = (e) => {
+    filterDispatcher({
+      type: "FILTER_BY_SEARCH",
+      payload: e.target.value,
+    });
+    navigate("/products");
+  };
   return (
     <div className="header">
-      <NavLink to="/" className="header-name">VelvetGlow</NavLink>
+      <NavLink to="/" className="header-name">
+        VelvetGlow
+      </NavLink>
       <BiSearchAlt className="search-icon" />
-      <input
-        placeholder="search"
-        onChange={(e) =>
-          filterDispatcher({
-            type: "FILTER_BY_SEARCH",
-            payload: e.target.value,
-          })
-        }
-      />
+      <input placeholder="search" onChange={(e) => searchFilterHandler(e)} />
       <div className="header-link">
         {isLoggedIn ? (
-          <NavLink to="/profile" className="header-link-profile">Profile</NavLink>
+          <NavLink to="/profile" className="header-link-profile">
+            Profile
+          </NavLink>
         ) : (
-          <NavLink to="/login" className="header-link-login">Login</NavLink>
+          <NavLink to="/login" className="header-link-login">
+            Login
+          </NavLink>
         )}
 
         <NavLink to="/wishlist">
-          <BsBagHeartFill/>
+          <BsBagHeartFill />
         </NavLink>
         <NavLink to="/cart" className="cart-icon">
           <ImCart />

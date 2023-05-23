@@ -1,18 +1,22 @@
-import React from "react";
-import { useNavigate } from "react-router";
-import { useAuth } from "../../contexts/auth-context";
-
+import React, { useState } from "react";
+import "./profile.css";
+import UserProfile from "./UserProfile";
+import UserAddress from "./UserAddress";
 const Profile = () => {
-  const navigate = useNavigate();
-  const {isLoggedIn, setIsLoggedIn} = useAuth();
-  const logOutHandler = () => {
-    setIsLoggedIn(!isLoggedIn)
-    navigate("/logout")
-  }
+  
+  
+  const [navHeader, setNavHeader] = useState("profile");
   return (
-    <div>
-      Profile
-      <button onClick={logOutHandler}>log out</button>
+    <div className="profile">
+      <h3>Account</h3>
+
+      <nav className="profile-nav">
+        <span onClick={() => setNavHeader("profile")}>Profile</span>
+        <span onClick={() => setNavHeader("address")}>Address</span>
+      </nav>
+      {navHeader === "profile" ? <UserProfile /> : <UserAddress />}
+
+      
     </div>
   );
 };

@@ -18,12 +18,15 @@ export const Cart = () => {
           {cartData.cartItems?.map(({ name, qty, price }) => (
             <li key={name}>
               <span>
-                {name}({qty})
+                {name} ({qty})
               </span>{" "}
-              <span>₹{price}</span>
+              <span className="cart-price-price">₹{price}</span>
             </li>
           ))}
-          <p className="total-price">Total Price: {totalCartValue}</p>
+          <p className="total-price">
+            <span>Total Price: </span>
+            <span className="total-price-price">₹{totalCartValue}</span>
+          </p>
         </div>
       </div>
     </div>

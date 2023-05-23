@@ -39,6 +39,7 @@ button {
 
 body {
   color: var(--primary-color);
+  font-variant-numeric: tabular-nums;
 
 }
 

@@ -14,13 +14,16 @@ export const Login = () => {
     password: "",
   });
   const guestCreds = {
+    firstName: "Aakarsha",
+    lastName:"Shetty",
     email: "aakarshashetty@gmail.com",
     password: "aakarshashetty",
   };
   const loginHandler = () => {
-    if (userData.email !== "" && userData.password !== "") {
+    const {email,password} = userData;
+    if (email !== "" && password !== "") {
       setIsLoggedIn(!isLoggedIn);
-      getLoginData(userData.email, userData.password);
+      getLoginData(email, password);
       navigate(location?.state?.from?.pathname);
     } else {
       alert("Enter valid credentials");

@@ -6,15 +6,15 @@ const Footer = () => {
     <div className="footer">
     <div className="footer-links">
       <a
-        class="link"
+        className="link"
         href="https://www.linkedin.com/in/aakarsha-kodthiwada-5566bb184/"
       >
         <ImLinkedin />
       </a>
-      <a class="link" href="https://github.com/Aakarshashetty">
+      <a className="link" href="https://github.com/Aakarshashetty">
         <BsGithub />
       </a>
-      <a class="link" href="https://twitter.com/Aakarsha_shetty">
+      <a className="link" href="https://twitter.com/Aakarsha_shetty">
         <ImTwitter />
       </a>
     </div>

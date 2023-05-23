@@ -1,33 +1,31 @@
 import React from "react";
-import { useCart } from "../../contexts/cart-context";
+import { useParams } from "react-router";
+import { useData } from "../../contexts/data-context";
 import { BsFillSuitHeartFill } from "react-icons/bs";
-import { useNavigate } from "react-router";
+import { useCart } from "../../contexts/cart-context";
 import { useWishList } from "../../contexts/wishlist-context";
 
-const ProductCard = ({ product }) => {
+const ProductDetails = () => {
+  const { productId } = useParams();
+  const { productData } = useData();
+  const {addToWishlist, removeFromWishlist,wishlistData} = useWishList();
   const { cartData, addToCart } = useCart();
-  const { addToWishlist, removeFromWishlist, wishlistData } = useWishList();
-  const { _id, name, image, original_price, price, rating } = product;
-  const navigate = useNavigate();
-  const productDetailsHandler = (id) => {
-    navigate(`/products/${id}`);
-  };
+  const product = productData.products.find(({ _id }) => _id === productId);
+  const { _id, name, image, original_price, price, rating,offer,description } = product;
   return (
-    <div className="product-card">
-      <li key={_id}>
-        <img
-          src={image}
-          alt={name}
-          width={200}
-          onClick={() => productDetailsHandler(_id)}
-        />
-        <h3 onClick={() => productDetailsHandler(_id)}>
-          {name.slice(0, 29)}...
-        </h3>
-        <p className="price">
+    <div className="product-details">
+      <div className="product-details-image">
+        <img src={image} alt={name} />
+      </div>
+      <div className="product-details-details">
+        <h3>{name}</h3>
+        <span className="price">
           ₹{price}
           <span className="original-price">₹{original_price}</span>
-        </p>
+        </span>
+        <span className="offer">{offer}</span>
+        <p className="offer">inclusive of all taxes</p>
+        <p className="description"><b>Desciption:</b> {description}</p>
         <p className="rating">{rating}★</p>
 
         <button onClick={() => addToCart(product)} className="add-to-cart">
@@ -48,9 +46,9 @@ const ProductCard = ({ product }) => {
             />
           )}
         </button>
-      </li>
+      </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default ProductDetails;
