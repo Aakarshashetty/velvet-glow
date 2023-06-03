@@ -1,5 +1,4 @@
 import React from "react";
-import UserAddress from "../Profile/UserAddress";
 import { useCart } from "../../contexts/cart-context";
 
 const Checkout = () => {
