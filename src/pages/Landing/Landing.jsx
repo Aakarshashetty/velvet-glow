@@ -4,10 +4,14 @@ import { NavLink } from "react-router-dom";
 
 import "./landing.css";
 import Footer from "../../Components/Footer";
+
+
 export const Landing = () => {
   const { productData, filterDispatcher } = useData();
+  
   const navigate = useNavigate();
   const categoryHandler = (categoryName) => {
+    window.scrollTo(0,0);
     filterDispatcher({
       type: `FILTER_BY_${categoryName.toUpperCase()}`,
     });

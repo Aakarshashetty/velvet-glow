@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth-context";
+import {FiEyeOff,FiEye} from 'react-icons/fi'
 
 import "./signup.css";
 
@@ -31,8 +32,29 @@ const SignUp = () => {
   return (
     <div className="signup">
       <h2>Sign up</h2>
+      <label className="name">
+        <p className="first-name">First name:</p>
+        <input
+          placeholder="Enter your first name"
+          onChange={(e) =>
+            setNewUserData({ ...newUserData, firstName: e.target.value })
+          }
+          className="first-name-input"
+        />
+        <p className="last-name">Last name:</p>
+        <input
+          placeholder="Enter your Last name"
+          onChange={(e) =>
+            setNewUserData({ ...newUserData, lastName: e.target.value })
+          }
+          className="last-name-input"
+        />
+      </label>
+     
       <label>
-        First Email:
+        <p>
+          Email Address:
+          </p>
         <input
           placeholder="Enter your email"
           onChange={(e) =>
@@ -40,41 +62,24 @@ const SignUp = () => {
           }
         />
       </label>
+      
       <label>
-        First name:
-        <input
-          placeholder="Enter your first name"
-          onChange={(e) =>
-            setNewUserData({ ...newUserData, firstName: e.target.value })
-          }
-        />
-      </label>
-      <label>
-        Last name:
-        <input
-          placeholder="Enter your Last name"
-          onChange={(e) =>
-            setNewUserData({ ...newUserData, lastName: e.target.value })
-          }
-        />
-      </label>
-      <label>
-        Password:
+        <p>Password:</p>
         <input
           type={passwordType ? "text" : "password"}
           onChange={(e) =>
             setNewUserData({ ...newUserData, password: e.target.value })
           }
         />
-        <button onClick={() => setPasswordType((prev) => !prev)}>
-          {passwordType ? "hide" : "show"}
+        <button onClick={() => setPasswordType((prev) => !prev)} className="show">
+          {passwordType ? <FiEyeOff/> : <FiEye/>}
         </button>
       </label>
       <label>
-        Confirm password:
+        <p>Confirm password:</p>
         <input type={passwordType ? "text" : "password"} />
       </label>
-      <button onClick={signupHandler}>Create New Account</button>
+      <button onClick={signupHandler} className="signup-button">Create New Account</button>
       <span>
         Already have an account? <NavLink to="/login">sign in</NavLink>
       </span>

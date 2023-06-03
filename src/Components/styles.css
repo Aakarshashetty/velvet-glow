@@ -53,7 +53,29 @@
     background-color: var(--primary-color);
     color: var(--secondary-color);
 }
-
+.header .cart-icon,.header .wishlist-icon{
+    position: relative;
+}
+.header .cart-length{
+    position: absolute;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 13px;
+    padding: 0rem 0.3rem;
+    font-size: 12px;
+    left: 32px;
+    top: 0px;
+}
+.header .wishlist-length{
+    position: absolute;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 13px;
+    padding: 0rem 0.3rem;
+    font-size: 12px;
+    top:0px;
+    left: 28px;
+}
 a {
 
     color: var(--primary-color);

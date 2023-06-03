@@ -15,6 +15,17 @@ export const users = [
     password: "aakarshashetty",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    address: [
+      {
+        name: "Aakarsha shetty",
+        street: "2-1-44/2, VS Nagar",
+        city: "Hyderabad",
+        state: "Telangana",
+        country: "India",
+        zipCode: "550103",
+        mobile: "123097997",
+      }
+    ]
   },
   {
     _id: uuid(),
@@ -24,5 +35,16 @@ export const users = [
     password: "shashank",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    address:[
+      {
+        name: "Shashank shetty",
+        street: "2-1-44/2, VS Nagar",
+        city: "Hyderabad",
+        state: "Telangana",
+        country: "India",
+        zipCode: "550103",
+        mobile: "123097997",
+      }
+    ]
   },
 ];

@@ -3,7 +3,7 @@ import { useAuth } from "../../contexts/auth-context";
 import { useLocation, useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 
-import './login.css'
+import "./login.css";
 
 export const Login = () => {
   const { getLoginData, setIsLoggedIn, isLoggedIn } = useAuth();
@@ -15,12 +15,12 @@ export const Login = () => {
   });
   const guestCreds = {
     firstName: "Aakarsha",
-    lastName:"Shetty",
+    lastName: "Shetty",
     email: "aakarshashetty@gmail.com",
     password: "aakarshashetty",
   };
   const loginHandler = () => {
-    const {email,password} = userData;
+    const { email, password } = userData;
     if (email !== "" && password !== "") {
       setIsLoggedIn(!isLoggedIn);
       getLoginData(email, password);
@@ -44,18 +44,26 @@ export const Login = () => {
   };
   return (
     <div className="login">
-      <input
-        placeholder="Enter email"
-        type="email"
-        onChange={(e) => handleCredentials(e)}
-      />
-      <input
-        placeholder="Enter password"
-        type="password"
-        onChange={(e) => handleCredentials(e)}
-      />
-      <button onClick={loginHandler}>{isLoggedIn ? "Logout" : "Login"}</button>
-      <button onClick={loginAsGuestHandler}>Login As a Guest</button>
+      <h2>Login</h2>
+      <label>
+        <p>Email address</p>
+        <input
+          placeholder="Enter email"
+          type="email"
+          onChange={(e) => handleCredentials(e)}
+        />
+      </label>
+      <label>
+        <p>Password</p>
+        <input
+          placeholder="Enter password"
+          type="password"
+          onChange={(e) => handleCredentials(e)}
+        />
+      </label>
+
+      <button onClick={loginHandler} className="login-button">{isLoggedIn ? "Logout" : "Login"}</button>
+      <button onClick={loginAsGuestHandler} className="login-guest">Login As a Guest</button>
       <span>
         Don't have an account? <NavLink to="/signup">Sign up</NavLink>
       </span>

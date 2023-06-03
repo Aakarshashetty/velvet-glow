@@ -1,6 +1,63 @@
 .signup{
-    margin: 100px;
+    margin: 100px auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 70vh;
+    width: 70vh;
+    position: relative;
+}
+.signup:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 button{
     margin: 0px 10px;
+}
+.signup p{
+    margin: 5px 0px;
+}
+.signup input{
+    height: 1.7rem;
+    border: 2px solid var(--grey);
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+.signup input:focus{
+    outline: none;
+}
+.signup .show{
+    position: absolute;
+    left: 300px;
+    bottom: 166px;
+    background-color: transparent;
+    color: var(--dark-brown);
+    font-size: 15px;
+}
+.signup .signup-button{
+    padding: 0.5rem 5rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.signup .signup-button:hover{
+    background-color: var(--primary-color);
+}
+.first-name{
+    grid-area: "f";
+}
+.first-name-input{
+    grid-area: "fi";
+}
+.last-name{
+    grid-area: "l";
+}
+.last-name-input{
+    grid-area: "li";
+}
+.signup .name{
+    display: grid;
+   grid-template-areas: "f l"
+                         "fi li"
 }

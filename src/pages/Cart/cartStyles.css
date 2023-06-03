@@ -5,13 +5,24 @@
 .cart{
     position: relative;
 }
+.cart .checkout{
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+    margin: 10px 380px;
+}
+.cart .checkout:hover{
+    background-color: var(--primary-color);
+}
 .cart-list{
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 50px;
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 100%;
+    text-align: center;
 }
 .cart-card{
     list-style: none;

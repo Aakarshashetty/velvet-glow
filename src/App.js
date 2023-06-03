@@ -8,10 +8,11 @@ import { Login } from "./pages/Login/Login";
 import { Header } from "./Components/Header";
 import { RequiresAuth } from "./Components/RequiresAuth";
 import SignUp from "./signup/SignUp";
-import Profile from "./pages/Profile/Profile";
+import UserProfile from "./pages/Profile/UserProfile";
 import Logout from "./pages/Logout/Logout";
 import ProductDetails from "./pages/ProductPage/ProductDetails";
-
+import Checkout from "./pages/checkout/Checkout";
+import UserAddress from "./pages/Profile/UserAddress";
 
 function App() {
   return (
@@ -39,10 +40,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/address" element={<UserAddress />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
       </Routes>
-      
     </div>
   );
 }

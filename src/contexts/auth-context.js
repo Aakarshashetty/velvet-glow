@@ -4,10 +4,8 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(localStorage?.user);
-  const getLoginData = async (
-    userEmail,
-    userPassword,
-  ) => {
+  const [userAddress, setUserAddress] = useState(localStorage?.userAddress);
+  const getLoginData = async (userEmail, userPassword) => {
     try {
       const creds = {
         email: userEmail,
@@ -17,10 +15,14 @@ export const AuthContextProvider = ({ children }) => {
         method: "POST", // or 'PUT'
         body: JSON.stringify(creds),
       });
-      const { foundUser,encodedToken } = await response.json();
+      const { foundUser, encodedToken } = await response.json();
       localStorage.setItem("encodedToken", encodedToken);
-      localStorage.setItem("user", JSON.stringify({user:foundUser}));
-      setUserData(foundUser)
+      localStorage.setItem("user", JSON.stringify({ user: foundUser }));
+      localStorage.setItem(
+        "userAddress",
+        JSON.stringify({ userAddress: foundUser.address })
+      );
+      setUserData(foundUser);
     } catch (e) {}
   };
   const addUserData = async ({ firstName, lastName, email, password }) => {
@@ -34,10 +36,10 @@ export const AuthContextProvider = ({ children }) => {
         method: "POST", // or 'PUT'
         body: JSON.stringify(userData),
       });
-      const { encodedToken,createdUser } = await response.json();
+      const { encodedToken, createdUser } = await response.json();
       localStorage.setItem("encodedToken", encodedToken);
-      localStorage.setItem("user", JSON.stringify({user:createdUser}));
-      setUserData(createdUser)
+      localStorage.setItem("user", JSON.stringify({ user: createdUser }));
+      setUserData(createdUser);
     } catch (e) {}
   };
   return (
@@ -49,6 +51,8 @@ export const AuthContextProvider = ({ children }) => {
         addUserData,
         userData,
         setUserData,
+        userAddress,
+        setUserAddress,
       }}
     >
       {children}

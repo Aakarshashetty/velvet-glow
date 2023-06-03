@@ -6,10 +6,14 @@ import { useAuth } from "../contexts/auth-context";
 import { BiSearchAlt } from "react-icons/bi";
 import { BsBagHeartFill } from "react-icons/bs";
 import { ImCart } from "react-icons/im";
+import { useCart } from "../contexts/cart-context";
+import { useWishList } from "../contexts/wishlist-context";
 export const Header = () => {
   const { filterDispatcher } = useData();
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
+  const {cartLength} = useCart();
+  const {wishListLength} = useWishList();
   const searchFilterHandler = (e) => {
     filterDispatcher({
       type: "FILTER_BY_SEARCH",
@@ -35,11 +39,13 @@ export const Header = () => {
           </NavLink>
         )}
 
-        <NavLink to="/wishlist">
+        <NavLink to="/wishlist" className = "wishlist-icon">
           <BsBagHeartFill />
+          {wishListLength > 0 && <p className="wishlist-length">{wishListLength}</p>}
         </NavLink>
         <NavLink to="/cart" className="cart-icon">
           <ImCart />
+          {cartLength>0 && <p className="cart-length">{cartLength}</p>}
         </NavLink>
       </div>
     </div>
