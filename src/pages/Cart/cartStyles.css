@@ -53,18 +53,23 @@
     text-decoration: line-through;
     margin: 10px;
 }
-
+.cart-card-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .cart-card .price {
     font-size: 17px;
     font-family: none;
     margin: 10px 0px;
-}
+    }
 .cart-card .offer{
     color: #94a3b8;
     font-family: none;
     margin: 5px 0px;
     margin-bottom: 25px;
     font-size: 18px;
+    
 }
 .cart-card .rating {
     position: absolute;
@@ -95,6 +100,7 @@
     border: 1px solid var(--grey);
     border-radius: 7px;
     font-size: 19px;
+    
 }
 .cart-price{
     max-width: 300px;

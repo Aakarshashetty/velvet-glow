@@ -1,46 +1,52 @@
-.landing{
+.landing {
     display: flex;
     flex-direction: column;
     text-align: center;
     background-color: var(--light-brown);
 }
-.landing h1{
+
+.landing h1 {
     margin: 1rem;
 }
-.landing-categories{
+
+.landing-categories {
     display: flex;
+    flex-wrap: wrap;
     flex-basis: 100%;
     justify-content: space-between;
     margin: 20px;
 }
 
-.landing-categories-category{
-    height: 40vh;
+.landing-categories-category {
+    height: 30vh;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    margin: 0px 20px;
-    width: 90vh;
+    margin: 10px 20px;
+    width: 40vh;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.landing-categories-category:hover{
-    top:-5px;
+
+.landing-categories-category:hover {
+    top: -5px;
     cursor: pointer;
 }
-.landing-categories-category img{
+
+.landing-categories-category img {
     border-radius: 5px;
-    width:400px ;
-    height:230px;
+    width: 270px;
+    height: 180px;
 }
 
-.hero-image{
+.hero-image {
     background-image: url(images/hero-image.png);
     background-size: cover;
-    height: 580px;
+    height: 280px;
     width: 100%;
     position: relative;
 }
-.landing-button{
+
+.landing-button {
     padding: 1rem;
     align-self: center;
     margin: 10px 0px;
@@ -52,7 +58,49 @@
     font-size: 16px;
     font-weight: 500;
 }
-.landing-button:hover{
+
+.landing-button:hover {
     background-color: var(--primary-color);
     color: var(--secondary-color);
+}
+
+@media (min-width:768px) {
+    .landing-categories-category{
+        width:90vh
+    }
+    .landing-categories{
+        flex-wrap: nowrap;
+    }
+    .landing-categories-category {
+        height: 30vh;
+    }
+
+    .landing-categories-category img {
+        width: 210px;
+        height: 150px;
+    }
+
+    .hero-image {
+        height: 330px;
+        width: 100%;
+    }
+}
+
+@media (min-width:1024px) {
+    .landing-categories{
+        flex-direction: row;
+    }
+    .landing-categories-category {
+        height: 40vh;
+    }
+
+    .landing-categories-category img {
+        width: 400px;
+        height: 230px;
+    }
+
+    .hero-image {
+        height: 580px;
+        width: 100%;
+    }
 }
