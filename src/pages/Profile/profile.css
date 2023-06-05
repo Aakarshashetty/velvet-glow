@@ -1,4 +1,109 @@
-.user-profile{
-    margin-top: 100px;
+.user-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    margin: 10px auto;
+    margin-top: 100px;
+}
+.user-details-aside{
+    display: flex;
+    margin: 10px 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.user-details-aside p{
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border-right: 1px solid rgba(60, 64, 67, 0.3);
+}
+.user-details-details{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 1rem 1rem;
+    width: 66vh;
+    height: 100%;
+}
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.user-profile h3{
+    align-self: center;
+    margin: 10px 0px;
+}
+.user-profile p{
+    margin: 10px 0px;
+}
+.user-profile .logout{
+    align-self: flex-end;
+    padding: 0.5rem 2rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.user-profile .logout:hover{
+    background-color: var(--primary-color);
+}
+.user-address-details{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.user-address-details:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+.buttons{
+    align-self: flex-end;
+}
+.buttons .edit-button,.buttons .delete-button{
+    background: transparent;
+    color: var(--dark-brown);
+}
+.add-new-address-button{
+    margin: 20px 0px;
+    padding: 0.5rem 2rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.add-new-address-button:hover{
+    background-color: var(--primary-color);
+}
+.new-address-form,.edit-new-address{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+}
+.new-address-form input,.edit-new-address input{
+    height: 5vh;
+    width: 30vh;
+    margin: 5px 0px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    color: var(--dark-brown);
+    font-size: 15px;
+}
+.new-address-form input:focus,.edit-new-address input:focus{
+    outline: none;
+    border-bottom: 2px solid var(--dark-brown);
+    
+}
+.cancel-button{
+    align-self: flex-end;
+    background: transparent;
+    color: var(--dark-brown);
+}
+.save-button,.update-button{
+    margin: 5px 0px;
+    padding: 0.5rem 2rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.save-button:hover,.update-button:hover{
+    background-color: var(--primary-color);
 }

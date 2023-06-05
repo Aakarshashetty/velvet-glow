@@ -3,10 +3,10 @@ import { AddNewAddress } from "./AddNewAddress";
 import EditAddress from "./EditAddress";
 import { useAuth } from "../../contexts/auth-context";
 import { v4 as uuid } from "uuid";
+import {MdEdit} from 'react-icons/md';
+import {RiDeleteBin6Line} from 'react-icons/ri'
 
 const UserAddress = () => {
-  //   const [addressForm,setAddressForm] = useState(newAddress)
-  //   const [address, setAddress] = useState([dummyAddress]);
   const [newAddress, setNewAddress] = useState({
     id: uuid(),
     name: "",
@@ -58,14 +58,13 @@ const UserAddress = () => {
     setUserAddress(updatedAddress);
   };
   return (
-    <div>
-      <h3>My Addressess</h3>
+    <div className="user-address">
       {userAddress?.map((address) => {
         const { id, name, street, city, state, country, zipCode, mobile } =
           address;
         return (
           <li key={name}>
-            <div>
+            <div className="user-address-details">
               <h4>{name}</h4>
               <p>
                 {street}, {city}, {state}
@@ -73,13 +72,16 @@ const UserAddress = () => {
               <p>{zipCode}</p>
               <p>{country}</p>
               <p>Mobile Number: {mobile}</p>
-              <button onClick={() => editAddress(address)}>Edit</button>
-              <button onClick={() => removeAddress(id)}>Remove</button>
+              <div className="buttons">
+              <button onClick={() => editAddress(address)} className="edit-button"><MdEdit/>Edit</button>
+              <button onClick={() => removeAddress(id)} className="delete-button"><RiDeleteBin6Line/>Remove</button>
+              </div>
+              
             </div>
           </li>
         );
       })}
-      <button onClick={() => setAddAddress(true)}>Add New Address</button>
+      <button onClick={() => setAddAddress(true)} className="add-new-address-button">Add New Address</button>
       {addAddress && (
         <AddNewAddress
           addNewAddress={addOrEditAddress}

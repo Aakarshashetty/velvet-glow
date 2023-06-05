@@ -1,14 +1,14 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0.5rem;
+    padding: 0.3rem 0.5rem;
     border: 1px solid transparent;
     background-color: var(--secondary-color);
     position: fixed;
     z-index: 1;
     right: 0px;
     left: 0px;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 500;
 }
 
@@ -32,7 +32,7 @@
     background-color: transparent;
     position: relative;
     text-align: left;
-    padding: 0.5rem 2rem;
+    padding: 0.3rem 2rem;
     width: 50%;
     font-size: 15px;
     color: var(--primary-color);
@@ -81,6 +81,7 @@
     left: 28px;
 }
 
+
 a {
 
     color: var(--primary-color);
@@ -94,8 +95,8 @@ a:hover {
     color: var(--primary-color);
     size: 18px;
     position: absolute;
-    left: 325px;
-    top: 23px
+    left: 8.5rem;
+    top: 0.8rem
 }
 
 .footer {
@@ -118,19 +119,33 @@ a:hover {
 }
 
 .filter-panel {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: left;
     color: var(--primary-color);
-    /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; */
     padding: 1rem 2rem;
     margin-top: 0px;
     position: fixed;
     z-index: 1;
     top: 50px;
     left: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
+    overflow-y: auto;
+    padding-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-color);
+    width: 270px;
+    height: 100%;
+    grid-gap: 1rem;
+    gap: 1rem;
+    position: fixed;
+    left: 0;
+    overflow-y: auto;
+    z-index: 5;
+    padding: 1rem 0.5rem 80px;
+    font-size: 0.9rem;
+    
+   
 }
 
 .filter-checkbox {
@@ -185,7 +200,57 @@ input[type="range"]::-webkit-slider-thumb {
 .filter-panel h4 {
     margin: 20px 10px;
 }
-
+@media (min-width:645px){
+    .search-icon{
+        left: 9rem;
+    }
+}
+@media (min-width:675px){
+    .search-icon{
+        left: 9.5rem;
+    }
+}
+@media (min-width:715px){
+    .search-icon{
+        left: 10rem;
+    }
+}
+@media (min-width:750px){
+    .search-icon{
+        left: 10.5rem;
+    }
+}
+@media (min-width:768px){
+    .search-icon{
+        left: 11rem;
+    }
+}
+@media (min-width:850px){
+    .search-icon{
+        left: 12rem;
+    }
+}
+@media (min-width:925px){
+    .search-icon{
+        left: 13rem;
+    }
+}
+@media (min-width:1024px){
+    .header{
+        padding: 1rem 0.5rem;
+        font-size: 19px;
+    }
+    .header input{
+        padding: 0.5rem 2rem;
+    }
+    .search-icon{
+        left: 20.5rem;
+        top:1.5rem
+    }
+    .filter-panel{
+        padding: 1rem 2rem;
+    }
+}
 /* input[type='range'] {
     overflow: hidden;
     width: 150px;

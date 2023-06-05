@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useCart } from "../../contexts/cart-context";
 import CartProductCard from "./CartProductCard";
+import {toast} from 'react-hot-toast';
 
 import "./cartStyles.css";
 
@@ -11,6 +12,7 @@ export const Cart = () => {
   return (
     <div className="cart">
       <h4>My Cart({cartLength})</h4>
+      <div className="cart-box">
       <div className="cart-list">
         {cartLength > 0 ? (
           cartData.cartItems?.map((product) => (
@@ -19,7 +21,7 @@ export const Cart = () => {
         ) : (
           <h2>Your cart is empty!</h2>
         )}
-
+</div>
         <div className="cart-price">
           <h3>CART PRICE DETAILS</h3>
           {cartData.cartItems?.map(({ name, qty, price }) => (
@@ -35,8 +37,8 @@ export const Cart = () => {
             <span className="total-price-price">₹{totalCartValue}</span>
           </p>
         </div>
-      </div>
-     {cartLength > 0 && <button onClick={() => navigate("/checkout")} className="checkout">CheckOut</button>} 
+        </div>
+     {cartLength > 0 && <button onClick={() => toast.success("Product ordered successfully!")} className="checkout">CheckOut</button>} 
     </div>
   );
 };

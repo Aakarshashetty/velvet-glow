@@ -2,8 +2,8 @@ import React from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { useNavigate } from "react-router";
 import "./profile.css";
-import UserAddress from "./UserAddress";
 import { toast } from "react-hot-toast";
+import {CgProfile} from 'react-icons/cg'
 
 const UserProfile = () => {
   const { isLoggedIn, setIsLoggedIn, userData } = useAuth();
@@ -11,12 +11,13 @@ const UserProfile = () => {
   const logOutHandler = () => {
     setIsLoggedIn(!isLoggedIn);
     toast.success("Logged out successfully")
-    navigate("/logout");
+    navigate("/");
   };
   const { firstName, lastName } = userData;
   return (
     <div className="user-profile">
-      <h3>Profile Details</h3>
+      <h3><CgProfile/> Profile Details</h3>
+      
       <p>
         <b>First Name: </b>
         {firstName}
@@ -26,9 +27,8 @@ const UserProfile = () => {
         {lastName}
       </p>
       <button onClick={logOutHandler} className="logout">
-        log out
+        Logout
       </button>
-      <UserAddress/>
     </div>
   );
 };

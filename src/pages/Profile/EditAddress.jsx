@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-
+import { ImCancelCircle } from "react-icons/im";
 const EditAddress = ({ address, saveAddress }) => {
   const [updatedAddress, setUpdatedAddress] = useState(address);
 
   return (
-    <div>
+    <div className="edit-new-address">
       <h2>Edit Address</h2>
+      <button className="cancel-button"><ImCancelCircle /></button>
       <input
         placeholder="Enter name"
         defaultValue={address.name}
@@ -55,8 +56,8 @@ const EditAddress = ({ address, saveAddress }) => {
           setUpdatedAddress({ ...updatedAddress, mobile: e.target.value })
         }
       />
-      <button onClick={() => saveAddress(updatedAddress)}>update</button>
-      <button>Cancel</button>
+      <button onClick={() => saveAddress(updatedAddress)} className="update-button">Update</button>
+      
     </div>
   );
 };

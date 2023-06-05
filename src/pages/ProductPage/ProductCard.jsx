@@ -20,8 +20,8 @@ const ProductCard = ({ product }) => {
     isLoggedIn ? addToCart(product) : navigate("/login");
   };
   return (
-    <div className="product-card">
-      <li key={_id}>
+    <div className="product-card" key={_id}>
+      <li >
         <img
           src={image}
           alt={name}

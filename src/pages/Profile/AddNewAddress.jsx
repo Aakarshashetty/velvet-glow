@@ -1,18 +1,23 @@
+import { ImCancelCircle } from "react-icons/im";
 export const AddNewAddress = ({
   addNewAddress,
   addAddress,
   setAddAddress,
   newAddress,
   setNewAddress,
-  formAddress,
 }) => {
   const saveAddress = () => {
     addNewAddress(newAddress);
     setAddAddress(!addAddress);
   };
   return (
-    <div>
-      <h2>Add New Address</h2>
+    <div className="new-address-form">
+      <button
+        onClick={() => setAddAddress(!addAddress)}
+        className="cancel-button"
+      >
+        <ImCancelCircle />
+      </button>
       <input
         placeholder="Enter name"
         onChange={(e) => setNewAddress({ ...newAddress, name: e.target.value })}
@@ -51,9 +56,10 @@ export const AddNewAddress = ({
           setNewAddress({ ...newAddress, mobile: e.target.value })
         }
       />
-      <button onClick={saveAddress}>Save</button>
-      <button onClick={() => setAddAddress(!addAddress)}>Cancel</button>
-      {/* <button onChange={}>Random Address</button> */}
+
+      <button onClick={saveAddress} className="save-button">
+        Add Address
+      </button>
     </div>
   );
 };

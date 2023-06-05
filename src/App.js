@@ -8,12 +8,12 @@ import { Login } from "./pages/Login/Login";
 import { Header } from "./Components/Header";
 import { RequiresAuth } from "./Components/RequiresAuth";
 import SignUp from "./signup/SignUp";
-import UserProfile from "./pages/Profile/UserProfile";
 import Logout from "./pages/Logout/Logout";
 import ProductDetails from "./pages/ProductPage/ProductDetails";
 import Checkout from "./pages/checkout/Checkout";
 import UserAddress from "./pages/Profile/UserAddress";
 import {Toaster} from 'react-hot-toast';
+import UserDetails from "./pages/Profile/UserDetails";
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserDetails />} />
         <Route path="/address" element={<UserAddress />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/products/:productId" element={<ProductDetails />} />

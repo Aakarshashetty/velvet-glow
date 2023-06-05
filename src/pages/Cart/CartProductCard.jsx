@@ -8,8 +8,8 @@ const CartProductCard = ({ product }) => {
   const { removeFromCart, incrementQunatity, decrementQuantity } = useCart();
   const { _id, name, image, original_price, price, rating, qty,offer } = product;
   return (
-    <div className="cart-card">
-      <li key={_id}>
+    <div className="cart-card" key={_id}>
+      <li >
         <div className="cart-card-image">
           <img src={image} alt={name} width={200} />
         </div>
