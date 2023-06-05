@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { useCart } from "../../contexts/cart-context";
 import CartProductCard from "./CartProductCard";
 import {toast} from 'react-hot-toast';
@@ -7,7 +6,6 @@ import "./cartStyles.css";
 
 export const Cart = () => {
   const { cartData, cartLength, totalCartValue } = useCart();
-  const navigate = useNavigate();
 
   return (
     <div className="cart">
