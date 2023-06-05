@@ -1,5 +1,11 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { filterReducer, productReducer } from "../reducers/productReducter";
 
 const DataContext = createContext();
@@ -12,6 +18,7 @@ export const DataContextProvider = ({ children }) => {
     setFilterMen: false,
     setFilteMom: false,
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [filterData, filterDispatcher] = useReducer(filterReducer, {
     sort: "",
     byWomen: false,
@@ -23,6 +30,7 @@ export const DataContextProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const categoryData = await axios.get("/api/categories");
         categoryData.status === 200 &&
           productDispatcher({
@@ -37,12 +45,20 @@ export const DataContextProvider = ({ children }) => {
           });
       } catch (e) {
         console.error("coludn't load the data");
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, []);
   return (
     <DataContext.Provider
-      value={{ productData, productDispatcher, filterData, filterDispatcher }}
+      value={{
+        productData,
+        productDispatcher,
+        filterData,
+        filterDispatcher,
+        isLoading,
+      }}
     >
       {children}
     </DataContext.Provider>

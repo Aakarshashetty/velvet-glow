@@ -4,23 +4,22 @@ import { NavLink } from "react-router-dom";
 
 import "./landing.css";
 import Footer from "../../Components/Footer";
-
-
+import Loader from "../../Components/Loader";
 export const Landing = () => {
-  const { productData, filterDispatcher } = useData();
-  
+  const { productData, filterDispatcher, isLoading } = useData();
+
   const navigate = useNavigate();
   const categoryHandler = (categoryName) => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     filterDispatcher({
       type: `FILTER_BY_${categoryName.toUpperCase()}`,
     });
     navigate("/products");
   };
   const viewProductsHandler = () => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     navigate("/products");
-  }
+  };
   return (
     <>
       <div className="landing">
@@ -28,7 +27,9 @@ export const Landing = () => {
           <div className="hero-image2"></div>
         </NavLink>
         <h1> SHOP BY CATEGORIES</h1>
+
         <div className="landing-categories">
+          {isLoading && <Loader />}
           {productData.categories.map(({ _id, categoryName, img }) => (
             <div
               key={_id}
@@ -40,12 +41,12 @@ export const Landing = () => {
             </div>
           ))}
         </div>
-        <button
-          className="landing-button"
-          onClick={viewProductsHandler}
-        >
-          View all products
-        </button>
+
+        {!isLoading && (
+          <button className="landing-button" onClick={viewProductsHandler}>
+            View all products
+          </button>
+        )}
         <Footer />
       </div>
     </>

@@ -1,10 +1,10 @@
 import { createContext, useContext, useState } from "react";
-
+import {toast} from 'react-hot-toast';
 const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(localStorage?.user);
-  const [userAddress, setUserAddress] = useState(localStorage?.userAddress);
+  const [userAddress, setUserAddress] = useState([]);
   const getLoginData = async (userEmail, userPassword) => {
     try {
       const creds = {
@@ -18,14 +18,14 @@ export const AuthContextProvider = ({ children }) => {
       const { foundUser, encodedToken } = await response.json();
       localStorage.setItem("encodedToken", encodedToken);
       localStorage.setItem("user", JSON.stringify({ user: foundUser }));
-      localStorage.setItem(
-        "userAddress",
-        JSON.stringify({ userAddress: foundUser.address })
-      );
+      setUserAddress(foundUser.address)
       setUserData(foundUser);
-    } catch (e) {}
+      toast.success("LoggedIn Successfully")
+    } catch (e) {
+      toast.error("Something went wrong")
+    }
   };
-  const addUserData = async ({ firstName, lastName, email, password }) => {
+  const addUserData = async ({ firstName, email }) => {
     try {
       const userData = {
         email,
@@ -40,7 +40,10 @@ export const AuthContextProvider = ({ children }) => {
       localStorage.setItem("encodedToken", encodedToken);
       localStorage.setItem("user", JSON.stringify({ user: createdUser }));
       setUserData(createdUser);
-    } catch (e) {}
+      toast.success("Profile created successfully")
+    } catch (e) {
+      toast.error("Something went wrong")
+    }
   };
   return (
     <AuthContext.Provider

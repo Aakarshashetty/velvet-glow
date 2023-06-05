@@ -17,6 +17,7 @@ export const users = [
     updatedAt: formatDate(),
     address: [
       {
+        id:uuid(),
         name: "Aakarsha shetty",
         street: "2-1-44/2, VS Nagar",
         city: "Hyderabad",
@@ -37,6 +38,7 @@ export const users = [
     updatedAt: formatDate(),
     address:[
       {
+        id:uuid(),
         name: "Shashank shetty",
         street: "2-1-44/2, VS Nagar",
         city: "Hyderabad",

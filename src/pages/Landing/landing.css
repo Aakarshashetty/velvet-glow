@@ -64,13 +64,24 @@
     color: var(--secondary-color);
 }
 
+.dots-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+
 @media (min-width:768px) {
-    .landing-categories-category{
-        width:90vh
+    .landing-categories-category {
+        width: 90vh
     }
-    .landing-categories{
+
+    .landing-categories {
         flex-wrap: nowrap;
     }
+
     .landing-categories-category {
         height: 30vh;
     }
@@ -87,9 +98,10 @@
 }
 
 @media (min-width:1024px) {
-    .landing-categories{
+    .landing-categories {
         flex-direction: row;
     }
+
     .landing-categories-category {
         height: 40vh;
     }

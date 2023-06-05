@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useReducer } from "react";
 import { wishlistReducer } from "../reducers/wishlistReducer";
+import { toast } from "react-hot-toast";
 
 const WishListContext = createContext();
 export const WishListContextProvider = ({ children }) => {
@@ -25,8 +26,9 @@ export const WishListContextProvider = ({ children }) => {
           payload: response.data.wishlist,
         });
       }
-      
+      toast.success("Added to Wishlist")
     } catch (e) {
+      toast.error("Something went wrong")
       console.error("something is wrong");
     }
   };
@@ -42,6 +44,7 @@ export const WishListContextProvider = ({ children }) => {
           payload: response.data.wishlist,
         });
       }
+      toast.success("Removed from Wishlist")
     } catch (e) {
       console.error("something is wrong");
     }

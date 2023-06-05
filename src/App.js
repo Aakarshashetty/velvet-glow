@@ -13,11 +13,14 @@ import Logout from "./pages/Logout/Logout";
 import ProductDetails from "./pages/ProductPage/ProductDetails";
 import Checkout from "./pages/checkout/Checkout";
 import UserAddress from "./pages/Profile/UserAddress";
+import {Toaster} from 'react-hot-toast';
 
 function App() {
   return (
     <div className="App">
+      
       <Header />
+      <Toaster/>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/products" element={<Product />} />

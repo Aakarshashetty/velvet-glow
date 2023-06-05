@@ -25,7 +25,9 @@ a {
   outline: none;
   cursor: pointer;
 }
-
+li{
+  list-style: none;
+}
 .App {
   display: flex;
   flex-direction: column;
@@ -36,11 +38,13 @@ input,
 button {
   font-family: 'Raleway', sans-serif;
 }
-
-body {
+h1,h2,h3,h4,p{
   color: var(--primary-color);
-  font-variant-numeric: tabular-nums;
+}
+body {
   
+  font-variant-numeric: tabular-nums;
+
 }
 
 ::placeholder {
@@ -59,6 +63,7 @@ body {
   background: var(--primary-color);
   border-radius: 5px;
 }
+
 h1 {
   font-size: 1rem;
 }
@@ -72,13 +77,16 @@ p,
 button {
   font-size: 0.65rem;
 }
+
 @media (min-width: 768px) {
   h1 {
     font-size: 1.5rem;
   }
+
   h2 {
     font-size: 1rem;
   }
+
   h3,
   p,
   button {
@@ -90,9 +98,11 @@ button {
   h1 {
     font-size: 2rem;
   }
+
   h2 {
     font-size: 1.25rem;
   }
+
   h3,
   p,
   button {

@@ -1,26 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-const EditAddress = ({address,setAddAddress,addAddress}) => {
-    const [updatedAddress,setUpdatedAddress] = useState({
-        id:address.id,
-        name:"",
-        street:"",
-        city:"",
-        state:"",
-        country:"",
-        zipCode:"",
-        mobile:"",
-    })
-    const updateAddress = {
-        
-    }
+const EditAddress = ({ address, saveAddress }) => {
+  const [updatedAddress, setUpdatedAddress] = useState(address);
+
   return (
     <div>
-        <h2>Edit Address</h2>
+      <h2>Edit Address</h2>
       <input
         placeholder="Enter name"
         defaultValue={address.name}
-        onChange={(e) => setUpdatedAddress({ ...updatedAddress, name: e.target.value })}
+        onChange={(e) =>
+          setUpdatedAddress({ ...updatedAddress, name: e.target.value })
+        }
       />
       <input
         placeholder="Enter H:No, Colony"
@@ -32,7 +23,9 @@ const EditAddress = ({address,setAddAddress,addAddress}) => {
       <input
         placeholder="Enter city"
         defaultValue={address.city}
-        onChange={(e) => setUpdatedAddress({ ...updatedAddress, city: e.target.value })}
+        onChange={(e) =>
+          setUpdatedAddress({ ...updatedAddress, city: e.target.value })
+        }
       />
       <input
         placeholder="Enter state"
@@ -62,10 +55,10 @@ const EditAddress = ({address,setAddAddress,addAddress}) => {
           setUpdatedAddress({ ...updatedAddress, mobile: e.target.value })
         }
       />
-      <button onClick={updateAddress}>update</button>
-      <button onClick={() => setAddAddress(!addAddress)}>Cancel</button>
+      <button onClick={() => saveAddress(updatedAddress)}>update</button>
+      <button>Cancel</button>
     </div>
-  )
-}
+  );
+};
 
-export default EditAddress
+export default EditAddress;

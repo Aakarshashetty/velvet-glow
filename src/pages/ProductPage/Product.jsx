@@ -4,10 +4,12 @@ import { useData } from "../../contexts/data-context";
 import ProductCard from "./ProductCard";
 import { v4 as uuid } from "uuid";
 import "./product.css";
+import Loader from "../../Components/Loader";
 export const Product = () => {
   const {
     productData,
     filterData: { sort, byWomen, byMen, byMomAndBaby, byPrice, search },
+    isLoading,
   } = useData();
 
   const getFilteredProducts = () => {
@@ -67,6 +69,7 @@ export const Product = () => {
     <>
       <div className="product">
         <Filters />
+        {isLoading && <Loader />}
         <div className="product-list">
           {getFilteredProducts().map((product) => (
             <ProductCard product={product} key={uuid()} />

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useReducer } from "react";
 import { cartReducer } from "../reducers/cartReducer";
+import { toast } from "react-hot-toast";
 
 const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
@@ -29,7 +30,9 @@ export const CartContextProvider = ({ children }) => {
           payload: response.data.cart,
         });
       }
+      toast.success("Added to Cart")
     } catch (e) {
+      toast.error("Something went wrong")
       console.error("Couldn't able to add product", e);
     }
   };
@@ -46,7 +49,9 @@ export const CartContextProvider = ({ children }) => {
           payload: response.data.cart,
         });
       }
+      toast.error("Deleted from cart")
     } catch (e) {
+      toast.error("Something went wrong")
       console.error("Couldn't able to delete product", e);
     }
   };
