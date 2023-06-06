@@ -44,18 +44,25 @@
 .user-profile .logout:hover{
     background-color: var(--primary-color);
 }
+.user-address-list{
+    display: flex;
+}
 .user-address-details{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin: 20px;
 }
 .user-address-details:hover{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 .buttons{
     align-self: flex-end;
+}
+.address-radio{
+    accent-color: var(--primary-color);
 }
 .buttons .edit-button,.buttons .delete-button{
     background: transparent;

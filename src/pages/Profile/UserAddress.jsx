@@ -63,8 +63,10 @@ const UserAddress = () => {
         const { id, name, street, city, state, country, zipCode, mobile } =
           address;
         return (
-          <li key={name}>
+          <li key={name} className="user-address-list">
+            <input type="radio" className="address-radio" name="address"/>
             <div className="user-address-details">
+            
               <h4>{name}</h4>
               <p>
                 {street}, {city}, {state}
@@ -93,7 +95,7 @@ const UserAddress = () => {
         />
       )}
       {showEditForm && (
-        <EditAddress address={formAddress} saveAddress={addOrEditAddress} />
+        <EditAddress address={formAddress} saveAddress={addOrEditAddress} showEditForm={showEditForm} setShowEditForm = {setShowEditForm}/>
       )}
     </div>
   );
