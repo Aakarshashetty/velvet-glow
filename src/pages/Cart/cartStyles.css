@@ -4,7 +4,10 @@
 }
 .cart{
     position: relative;
-    
+    text-align: center;
+}
+.cart h1{
+    margin-left: 220px;
 }
 .cart-box{
     display: flex;

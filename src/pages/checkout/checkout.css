@@ -1,0 +1,41 @@
+.checkout{
+    margin: 20px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+.checkout .address{
+    margin: 20px;
+}
+.checkout .price-details{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    padding: 1rem;
+    margin: 20px;
+    color: var(--dark-brown);
+    width: 76vh;
+    text-align: center;
+}
+.checkout .price-details h2{
+    margin: 10px;
+}
+.checkout .price-details-details{
+    border-top: 2px solid var(--grey);
+}
+.total-cart-value,.delivery-charges,.total-price{
+    padding: 0.7rem 0rem;
+    display: flex;
+    justify-content: space-between ;
+}
+.total-price{
+    font-weight: bold;
+}
+.proceed-button{
+    margin: 5px 0px;
+    padding: 0.5rem 2rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.proceed-button:hover{
+    background-color: var(--primary-color);
+}
