@@ -82,3 +82,12 @@
     font-size: 19px;
     font-weight: 500;
 }
+.add-to-cart{
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.add-to-cart:hover{
+    background-color: var(--primary-color);
+}

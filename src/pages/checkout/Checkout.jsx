@@ -4,9 +4,16 @@ import UserAddress from "../Profile/UserAddress";
 import "./checkout.css";
 import { IoIosArrowForward } from "react-icons/io";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const Checkout = () => {
   const { totalCartValue } = useCart();
+  const navigate = useNavigate();
+  const proceedToOrder = () => {
+    toast.success("Product ordered successfully")
+    navigate("/orders")
+
+  }
   return (
     <div className="checkout">
       <div className="address">
@@ -31,7 +38,7 @@ const Checkout = () => {
         </div>
         <button
           className="proceed-button"
-          onClick={() => toast.success("Product ordered successfully")}
+          onClick={proceedToOrder}
         >
           Proceed
           <IoIosArrowForward />

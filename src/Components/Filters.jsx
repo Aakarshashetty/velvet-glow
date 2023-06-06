@@ -1,9 +1,9 @@
 import { useData } from "../contexts/data-context";
-
+import Rating from "./Rating";
 export const Filters = () => {
   const {
     filterDispatcher,
-    filterData: { sort, byWomen, byMen, byMomAndBaby },
+    filterData: { sort, byWomen, byMen, byMomAndBaby,byPrice,byRating },
   } = useData();
 
   return (
@@ -36,7 +36,7 @@ export const Filters = () => {
           <input
             type="checkbox"
             checked={byMomAndBaby}
-            onChange={() => filterDispatcher({ type: "FILTER_BY_MOMANDBABY" })}
+            onChange={() => filterDispatcher({ type: "FILTER_BY_MOM&BABY" })}
           />
           <span>Mom & Baby</span>
         </label>
@@ -75,9 +75,22 @@ export const Filters = () => {
         onChange={(e) =>
           filterDispatcher({ type: "FILTER_BY_PRICE", payload: e.target.value })
         }
+        value={byPrice}
         className="range"
       />
-     
+      <h4>Rating</h4>
+      <div className="filter-by-rating" onClick={(e) => console.log(e)}>
+      <Rating
+          rating={byRating}
+          onClick={(i) =>
+            filterDispatcher({
+              type: "FILTER_BY_RATING",
+              payload: i + 1,
+            })
+          }
+          style={{ cursor: "pointer" }}
+        />
+      </div>
     </div>
   );
 };

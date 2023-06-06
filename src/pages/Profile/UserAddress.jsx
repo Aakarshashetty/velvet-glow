@@ -21,6 +21,7 @@ const UserAddress = () => {
   const { userAddress, setUserAddress } = useAuth();
   const [showNewAddressForm, setShowNewAddressForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
+  const [selectedAddress,setSelectedAddress] = useState(userAddress[0])
 
   const addOrEditAddress = (address) => {
     const matchingAddress = userAddress.find(
@@ -62,7 +63,7 @@ const UserAddress = () => {
           address;
         return (
           <li key={name} className="user-address-list">
-            <input type="radio" className="address-radio" name="address" />
+            <input type="radio" className="address-radio" name="address"  checked = {selectedAddress.id === id}onChange={() => setSelectedAddress(address)}/>
             <div className="user-address-details">
               <h4>{name}</h4>
               <p>

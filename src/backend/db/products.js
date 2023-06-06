@@ -16,7 +16,7 @@ export const products = [
     price: "663",
     offer: "44% OFF",
     in_stock: true,
-    rating: "4.5",
+    rating: "3.5",
     image:
       "https://images-static.nykaa.com/media/catalog/product/b/8/b8a916c8906063411147_1.jpg",
   },
@@ -30,7 +30,7 @@ export const products = [
     price: "379",
     offer: "20% OFF",
     in_stock: false,
-    rating: "4.4",
+    rating: "2.4",
     image:
       "https://images-static.nykaa.com/media/catalog/product/5/4/5440bc8AQUAA00000021_1.jpg",
   },
@@ -44,7 +44,7 @@ export const products = [
     price: "634",
     offer: "50% OFF",
     in_stock: true,
-    rating: "4.5",
+    rating: "1.5",
     image:
       "https://images-static.nykaa.com/media/catalog/product/8/f/8fb5316890618700029(1).jpg",
   },

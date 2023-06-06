@@ -46,12 +46,14 @@ export const AddNewAddress = ({
       />
       <input
         placeholder="Enter Postal Code"
+        type="number"
         onChange={(e) =>
           setNewAddress({ ...newAddress, zipCode: e.target.value })
         }
       />
       <input
         placeholder="Enter Mobile Number"
+        type="number"
         onChange={(e) =>
           setNewAddress({ ...newAddress, mobile: e.target.value })
         }

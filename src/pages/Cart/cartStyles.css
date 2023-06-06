@@ -24,6 +24,18 @@
 .cart .checkout:hover{
     background-color: var(--primary-color);
 }
+.cart .empty-cart h2,.cart .empty-cart p{
+    padding: 1rem;
+}
+.start-shopping{
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+.start-shopping:hover{
+    background-color: var(--primary-color);
+}
 .cart-list{
     display: flex;
     flex-direction: column;

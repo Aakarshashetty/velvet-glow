@@ -43,7 +43,7 @@ export const filterReducer = (filterData, action) => {
         ...filterData,
         byMen: !filterData.byMen,
       };
-    case "FILTER_BY_MOMANDBABY":
+    case "FILTER_BY_MOM&BABY":
       return {
         ...filterData,
         byMomAndBaby: !filterData.byMomAndBaby,
@@ -58,6 +58,8 @@ export const filterReducer = (filterData, action) => {
         ...filterData,
         byPrice: action.payload,
       };
+    case "FILTER_BY_RATING":
+      return { ...filterData, byRating: action.payload };
     case "CLEAR_FILTER":
       return {
         sort: "",

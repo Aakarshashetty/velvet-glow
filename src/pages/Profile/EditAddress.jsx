@@ -45,12 +45,14 @@ const EditAddress = ({ address, saveAddress,showEditForm,setShowEditForm }) => {
       <input
         placeholder="Enter Postal Code"
         defaultValue={address.zipCode}
+        type="number"
         onChange={(e) =>
           setUpdatedAddress({ ...updatedAddress, zipCode: e.target.value })
         }
       />
       <input
         placeholder="Enter Mobile Number"
+        type="number"
         defaultValue={address.mobile}
         onChange={(e) =>
           setUpdatedAddress({ ...updatedAddress, mobile: e.target.value })

@@ -21,13 +21,20 @@ export const Header = () => {
     });
     navigate("/products");
   };
+  const redirectToLandingPage = () => {
+    filterDispatcher({ type: "CLEAR_FILTER" });
+    navigate("/")
+  }
   return (
     <div className="header">
-      <NavLink to="/" className="header-name">
+      <h2 className="header-name" onClick={redirectToLandingPage}>
         VelvetGlow
-      </NavLink>
+      </h2>
+      <div className="search-container">
       <BiSearchAlt className="search-icon" />
       <input placeholder="search" onChange={(e) => searchFilterHandler(e)} />
+      </div>
+      
       <div className="header-link">
         {isLoggedIn ? (
           <NavLink to="/profile" className="header-link-profile">

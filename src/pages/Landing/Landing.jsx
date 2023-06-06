@@ -12,7 +12,7 @@ export const Landing = () => {
   const categoryHandler = (categoryName) => {
     window.scrollTo(0, 0);
     filterDispatcher({
-      type: `FILTER_BY_${categoryName.toUpperCase()}`,
+      type: `FILTER_BY_${categoryName.split(" ").join("").toUpperCase()}`,
     });
     navigate("/products");
   };

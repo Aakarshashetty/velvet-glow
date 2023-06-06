@@ -1,10 +1,19 @@
 import React from 'react'
 import { useWishList } from '../../contexts/wishlist-context';
 import { MdDelete } from "react-icons/md";
+import { useCart } from '../../contexts/cart-context';
+import { useNavigate } from 'react-router';
+import { useAuth } from '../../contexts/auth-context';
 
 const WishListCard = ({product}) => {
+  const { cartData, addToCart } = useCart();
     const {removeFromWishlist} = useWishList();
+    const { isLoggedIn } = useAuth();
+    const navigate = useNavigate();
     const { _id, name, image, original_price, price, rating,offer } = product;
+    const addProductToCart = () => {
+      isLoggedIn ? addToCart(product) : navigate("/login");
+    };
   return (
     <div className='wishlist-card'>
         <li key={_id}>
@@ -19,9 +28,15 @@ const WishListCard = ({product}) => {
           </p>
           <p className="offer">{offer}</p>
           <p className="rating">{rating}★</p>
-
-          
-
+          {cartData?.cartItems?.some((product) => product._id === _id) ? (
+          <button onClick={() => navigate("/cart")} className="add-to-cart">
+            Go to Cart
+          </button>
+        ) : (
+          <button onClick={addProductToCart} className="add-to-cart">
+            Add to Cart
+          </button>
+        )}
           <button
             onClick={() => removeFromWishlist(product)}
             className="remove-from-wishlist"

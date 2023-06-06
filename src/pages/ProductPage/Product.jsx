@@ -1,5 +1,4 @@
 import { Filters } from "../../Components/Filters";
-import Footer from "../../Components/Footer";
 import { useData } from "../../contexts/data-context";
 import ProductCard from "./ProductCard";
 import { v4 as uuid } from "uuid";
@@ -8,7 +7,7 @@ import Loader from "../../Components/Loader";
 export const Product = () => {
   const {
     productData,
-    filterData: { sort, byWomen, byMen, byMomAndBaby, byPrice, search },
+    filterData: { sort, byWomen, byMen, byMomAndBaby, byPrice, search,byRating },
     isLoading,
   } = useData();
 
@@ -31,12 +30,12 @@ export const Product = () => {
     }
     if (byMomAndBaby) {
       filteredProducts = filteredProducts.filter(
-        ({ category }) => category === "Mom & Baby"
+        ({ category }) => category.split(" ").join("").toLowerCase() === "mom&baby"
       );
     }
     if (byMen && byWomen) {
       filteredProducts = productData.products.filter(
-        ({ category }) => category !== "Mom & Baby"
+        ({ category }) => category.split(" ").join("").toLowerCase() !== "mom&baby"
       );
     }
     if (byMomAndBaby && byWomen) {
@@ -62,6 +61,11 @@ export const Product = () => {
         name.toLowerCase().includes(search)
       );
     }
+    if (byRating) {
+      filteredProducts = filteredProducts.filter(
+        (prod) => Number(prod.rating) >= byRating
+      );
+    }
     return filteredProducts;
   };
 
@@ -70,13 +74,13 @@ export const Product = () => {
       <div className="product">
         <Filters />
         {isLoading && <Loader />}
-        <div className="product-list">
+        <h2>All Products({getFilteredProducts().length})</h2>
+        {getFilteredProducts().length>0 ?<div className="product-list">
           {getFilteredProducts().map((product) => (
             <ProductCard product={product} key={uuid()} />
           ))}
-        </div>
+        </div> : <h1>No Products available with applied filters</h1>}
       </div>
-      <Footer />
     </>
   );
 };

@@ -13,7 +13,7 @@ export const CartContextProvider = ({ children }) => {
     0
   );
 
-  const cartLength = cartData?.cartItems?.length;
+  let cartLength = cartData?.cartItems?.length;
 
   const addToCart = async (product) => {
     try {

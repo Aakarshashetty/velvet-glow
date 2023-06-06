@@ -14,6 +14,7 @@ import Checkout from "./pages/checkout/Checkout";
 import UserAddress from "./pages/Profile/UserAddress";
 import {Toaster} from 'react-hot-toast';
 import UserDetails from "./pages/Profile/UserDetails";
+import Orders from "./pages/Orders/Orders";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/profile" element={<UserDetails />} />
         <Route path="/address" element={<UserAddress />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
       </Routes>
     </div>

@@ -24,8 +24,9 @@ export const DataContextProvider = ({ children }) => {
     byWomen: false,
     byMen: false,
     byMomAndBaby: false,
-    byPrice: 0,
+    byPrice: 1000,
     search: "",
+    byRating:0,
   });
   useEffect(() => {
     (async () => {
