@@ -1,19 +1,19 @@
 import { ImCancelCircle } from "react-icons/im";
 export const AddNewAddress = ({
   addNewAddress,
-  addAddress,
-  setAddAddress,
+  showNewAddressForm,
+  setShowNewAddressForm,
   newAddress,
   setNewAddress,
 }) => {
   const saveAddress = () => {
     addNewAddress(newAddress);
-    setAddAddress(!addAddress);
+    setShowNewAddressForm(!showNewAddressForm);
   };
   return (
     <div className="new-address-form">
       <button
-        onClick={() => setAddAddress(!addAddress)}
+        onClick={() => setShowNewAddressForm(!showNewAddressForm)}
         className="cancel-button"
       >
         <ImCancelCircle />

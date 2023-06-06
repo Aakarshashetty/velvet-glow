@@ -3,8 +3,8 @@ import { AddNewAddress } from "./AddNewAddress";
 import EditAddress from "./EditAddress";
 import { useAuth } from "../../contexts/auth-context";
 import { v4 as uuid } from "uuid";
-import {MdEdit} from 'react-icons/md';
-import {RiDeleteBin6Line} from 'react-icons/ri'
+import { MdEdit } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const UserAddress = () => {
   const [newAddress, setNewAddress] = useState({
@@ -18,10 +18,8 @@ const UserAddress = () => {
     mobile: "",
   });
   const [formAddress, setFormAddress] = useState(newAddress);
-
   const { userAddress, setUserAddress } = useAuth();
-
-  const [addAddress, setAddAddress] = useState(false);
+  const [showNewAddressForm, setShowNewAddressForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
 
   const addOrEditAddress = (address) => {
@@ -44,7 +42,7 @@ const UserAddress = () => {
     } else {
       setUserAddress([...userAddress, address]);
     }
-    setAddAddress(false);
+    setShowNewAddressForm(false);
     setShowEditForm(false);
   };
 
@@ -64,9 +62,8 @@ const UserAddress = () => {
           address;
         return (
           <li key={name} className="user-address-list">
-            <input type="radio" className="address-radio" name="address"/>
+            <input type="radio" className="address-radio" name="address" />
             <div className="user-address-details">
-            
               <h4>{name}</h4>
               <p>
                 {street}, {city}, {state}
@@ -75,27 +72,48 @@ const UserAddress = () => {
               <p>{country}</p>
               <p>Mobile Number: {mobile}</p>
               <div className="buttons">
-              <button onClick={() => editAddress(address)} className="edit-button"><MdEdit/>Edit</button>
-              <button onClick={() => removeAddress(id)} className="delete-button"><RiDeleteBin6Line/>Remove</button>
+                <button
+                  onClick={() => editAddress(address)}
+                  className="edit-button"
+                >
+                  <MdEdit />
+                  Edit
+                </button>
+                <button
+                  onClick={() => removeAddress(id)}
+                  className="delete-button"
+                >
+                  <RiDeleteBin6Line />
+                  Remove
+                </button>
               </div>
-              
             </div>
           </li>
         );
       })}
-      <button onClick={() => setAddAddress(true)} className="add-new-address-button">Add New Address</button>
-      {addAddress && (
+      <button
+        onClick={() => setShowNewAddressForm(true)}
+        className="add-new-address-button"
+      >
+        Add New Address
+      </button>
+      {showNewAddressForm && (
         <AddNewAddress
           addNewAddress={addOrEditAddress}
-          addAddress={addAddress}
-          setAddAddress={setAddAddress}
+          showNewAddressForm={showNewAddressForm}
+          setShowNewAddressForm={setShowNewAddressForm}
           newAddress={newAddress}
           setNewAddress={setNewAddress}
           formAddress={formAddress}
         />
       )}
       {showEditForm && (
-        <EditAddress address={formAddress} saveAddress={addOrEditAddress} showEditForm={showEditForm} setShowEditForm = {setShowEditForm}/>
+        <EditAddress
+          address={formAddress}
+          saveAddress={addOrEditAddress}
+          showEditForm={showEditForm}
+          setShowEditForm={setShowEditForm}
+        />
       )}
     </div>
   );
