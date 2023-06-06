@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { useLocation, useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
-
+import {toast} from  'react-hot-toast';
 import "./login.css";
 
 export const Login = () => {
@@ -26,7 +26,7 @@ export const Login = () => {
       getLoginData(email, password);
       navigate(location?.state?.from?.pathname);
     } else {
-      alert("Enter valid credentials");
+      toast.error("Invalid Credentials")
     }
   };
   const loginAsGuestHandler = () => {

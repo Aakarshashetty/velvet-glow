@@ -49,7 +49,7 @@ export const CartContextProvider = ({ children }) => {
           payload: response.data.cart,
         });
       }
-      toast.error("Deleted from cart")
+      toast.error("Removed from cart")
     } catch (e) {
       toast.error("Something went wrong")
       console.error("Couldn't able to delete product", e);

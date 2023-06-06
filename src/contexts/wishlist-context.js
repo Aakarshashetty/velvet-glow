@@ -44,7 +44,7 @@ export const WishListContextProvider = ({ children }) => {
           payload: response.data.wishlist,
         });
       }
-      toast.success("Removed from Wishlist")
+      toast.error("Removed from Wishlist")
     } catch (e) {
       console.error("something is wrong");
     }
