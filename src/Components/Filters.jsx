@@ -63,6 +63,11 @@ export const Filters = () => {
         High to Low
       </div>
       <h4>Price</h4>
+      <div className="price-range">
+          <p>100</p>
+          <p>500</p>
+          <p>1000</p>
+      </div>
       <input
         type="range"
         min="100"
