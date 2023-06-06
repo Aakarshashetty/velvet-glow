@@ -30,7 +30,7 @@ button{
 .signup .show{
     position: absolute;
     left: 300px;
-    bottom: 166px;
+    bottom: 205px;
     background-color: transparent;
     color: var(--dark-brown);
     font-size: 15px;
