@@ -24,10 +24,11 @@ export const DataContextProvider = ({ children }) => {
     byWomen: false,
     byMen: false,
     byMomAndBaby: false,
-    byPrice: 1000,
+    byPrice: 2000,
     search: "",
     byRating:0,
   });
+  const [showMenu,setShowMenu] = useState(false);
   useEffect(() => {
     (async () => {
       try {
@@ -59,6 +60,8 @@ export const DataContextProvider = ({ children }) => {
         filterData,
         filterDispatcher,
         isLoading,
+        showMenu,
+        setShowMenu
       }}
     >
       {children}

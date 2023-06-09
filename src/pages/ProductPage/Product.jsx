@@ -4,11 +4,22 @@ import ProductCard from "./ProductCard";
 import { v4 as uuid } from "uuid";
 import "./product.css";
 import Loader from "../../Components/Loader";
+import { FaFilter } from "react-icons/fa";
 export const Product = () => {
   const {
     productData,
-    filterData: { sort, byWomen, byMen, byMomAndBaby, byPrice, search,byRating },
+    filterData: {
+      sort,
+      byWomen,
+      byMen,
+      byMomAndBaby,
+      byPrice,
+      search,
+      byRating,
+    },
     isLoading,
+    showMenu,
+    setShowMenu,
   } = useData();
 
   const getFilteredProducts = () => {
@@ -30,12 +41,14 @@ export const Product = () => {
     }
     if (byMomAndBaby) {
       filteredProducts = filteredProducts.filter(
-        ({ category }) => category.split(" ").join("").toLowerCase() === "mom&baby"
+        ({ category }) =>
+          category.split(" ").join("").toLowerCase() === "mom&baby"
       );
     }
     if (byMen && byWomen) {
       filteredProducts = productData.products.filter(
-        ({ category }) => category.split(" ").join("").toLowerCase() !== "mom&baby"
+        ({ category }) =>
+          category.split(" ").join("").toLowerCase() !== "mom&baby"
       );
     }
     if (byMomAndBaby && byWomen) {
@@ -73,13 +86,18 @@ export const Product = () => {
     <>
       <div className="product">
         <Filters />
+        <FaFilter className="filter" onClick={() => setShowMenu(!showMenu)} />
         {isLoading && <Loader />}
         <h2>All Products({getFilteredProducts().length})</h2>
-        {getFilteredProducts().length>0 ?<div className="product-list">
-          {getFilteredProducts().map((product) => (
-            <ProductCard product={product} key={uuid()} />
-          ))}
-        </div> : <h1>No Products available with applied filters</h1>}
+        {getFilteredProducts().length > 0 ? (
+          <div className="product-list" onClick={() => setShowMenu(!showMenu)}>
+            {getFilteredProducts().map((product) => (
+              <ProductCard product={product} key={uuid()} />
+            ))}
+          </div>
+        ) : (
+          <h1>No Products available with applied filters</h1>
+        )}
       </div>
     </>
   );

@@ -3,16 +3,20 @@ import Rating from "./Rating";
 export const Filters = () => {
   const {
     filterDispatcher,
-    filterData: { sort, byWomen, byMen, byMomAndBaby,byPrice,byRating },
+    filterData: { sort, byWomen, byMen, byMomAndBaby, byPrice, byRating },
+    showMenu
   } = useData();
 
   return (
-    <div className="filter-panel">
+    <div
+      className={showMenu ? "filter-panel-hide" : "filter-panel"}
+      
+    >
       <div className="filter-header">
-      <h4>Filters</h4>
-      <button onClick={() => filterDispatcher({ type: "CLEAR_FILTER" })}>
-        clear
-      </button>
+        <h4>Filters</h4>
+        <button onClick={() => filterDispatcher({ type: "CLEAR_FILTER" })}>
+          clear
+        </button>
       </div>
       <h4>Category</h4>
       <div className="filter-checkbox">
@@ -64,9 +68,9 @@ export const Filters = () => {
       </div>
       <h4>Price</h4>
       <div className="price-range">
-          <p>100</p>
-          <p>500</p>
-          <p>1000</p>
+        <p>100</p>
+        <p>500</p>
+        <p>1000</p>
       </div>
       <input
         type="range"
@@ -80,7 +84,7 @@ export const Filters = () => {
       />
       <h4>Rating</h4>
       <div className="filter-by-rating" onClick={(e) => console.log(e)}>
-      <Rating
+        <Rating
           rating={byRating}
           onClick={(i) =>
             filterDispatcher({
