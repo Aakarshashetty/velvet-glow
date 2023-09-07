@@ -9,7 +9,7 @@ import "./landing.css";
 export const Landing = () => {
   const { productData, filterDispatcher, isLoading } = useData();
   const [bestOfProducts, setBestOfProducts] = useState("best-seller")
-  const [isActive,setIsActive] = useState(true)
+  
 
   const navigate = useNavigate();
   const categoryHandler = (categoryName) => {
