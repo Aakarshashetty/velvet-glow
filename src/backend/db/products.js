@@ -17,6 +17,7 @@ export const products = [
     offer: "44% OFF",
     in_stock: true,
     rating: "3.5",
+    best_seller:true,
     image:
       "https://images-static.nykaa.com/media/catalog/product/b/8/b8a916c8906063411147_1.jpg",
   },
@@ -87,6 +88,7 @@ export const products = [
     offer: "34% OFF",
     in_stock: false,
     rating: "4.4",
+    best_seller:true,
     image:
       "https://images-static.nykaa.com/media/catalog/product/3/2/320deadMINIM00000008n.jpg",
   },
@@ -116,6 +118,7 @@ export const products = [
     offer: "40% OFF",
     in_stock: true,
     rating: "4.5",
+    best_seller:true,
     image:
       "https://images-static.nykaa.com/media/catalog/product/f/5/f530b74NYKAE00000035_1.jpg",
   },
@@ -215,6 +218,7 @@ export const products = [
     offer: "50% OFF",
     in_stock: true,
     rating: "4.5",
+    best_seller:true,
     image:
       "https://images-static.nykaa.com/media/catalog/product/a/2/a2d609d4103040019479_1.jpg",
   },
@@ -260,4 +264,52 @@ export const products = [
     image:
       "https://images-static.nykaa.com/media/catalog/product/9/e/9ee7b27FIXDE00000051.jpg",
   },
+  {
+    _id:uuid(),
+    name:"Plum BodyLovin' Vanilla & Beachy Vibes Body Mist Duo | Super-refreshing | Aloe-infused",
+    category:"combo",
+    description:"Feelin’ beachy & sweet? This Hawaiian Rumba + Vanilla Vibes duo is for you! Infused with aloe juice to keep skin irritation away, 100% vegan, cruelty-free & nasties-free.",
+    original_price: "1050",
+    price:"735",
+    offer:"30% OFF",
+    in_stock:true,
+    rating:"4.5",
+    image: "https://plumgoodness.com/cdn/shop/products/HR_VVBMamazoncombo_1080x1080_ab250e0f-f017-4bbe-89b1-875e9f53caf4_277x.progressive.jpg?v=1689152930"
+  },
+  {
+    _id:uuid(),
+    name:"LANEIGE Am To Pm Lip Care",
+    category:"combo",
+    description:"Powerful hydration! Lightweight, tinted balm texture, Pocket sized fro easy, on-the-go application.",
+    original_price: "1290",
+    price:"1097",
+    offer:"15% OFF",
+    in_stock:true,
+    rating:"4.5",
+    image: "https://images-static.nykaa.com/media/catalog/product/e/b/eb6abd6LANEI00000152-01.jpg?tr=w-344,h-344,cm-pad_resize"
+  },
+  {
+    _id:uuid(),
+    name:"L'Oreal Paris Hydrated, Plump & Radiant Skin Kit",
+    category:"combo",
+    description:"Advanced Hyraluronic Acid Ritual - Ultimate Hydration for Plumpy Radiance.",
+    original_price: "1227",
+    price:"798",
+    offer:"35% OFF",
+    in_stock:true,
+    rating:"4.5",
+    image: "https://images-static.nykaa.com/media/catalog/product/c/4/c4f2851LOREA00000115_2.jpg?tr=w-344,h-344,cm-pad_resize"
+  },
+  {
+    _id:uuid(),
+    name:"The Derma Co 2% Salicylic Acid Face Serum, 1% Salicylic Acid Gel Face Wash & 1% Hyaluronic Sunscreen",
+    category:"combo",
+    description:"The Derma Co. 1% Salicylic Acid Face Wash for Active Acne with Salicylic Acid & Witch Hazel, The Derma Co 1% Hyaluronic Sunscreen Aqua Gel With Spf 50 Pa++++ For Broad Spectrum, The Derma Co. 2% Salicylic Acid Serum for Face for Active Acne with Witch Hazel.",
+    original_price: "1297",
+    price:"1064",
+    offer:"18% OFF",
+    in_stock:true,
+    rating:"4.4",
+    image: "https://images-static.nykaa.com/media/catalog/product/e/3/e387a36thede00000081.jpg?tr=w-344,h-344,cm-pad_resize"
+  }
 ];

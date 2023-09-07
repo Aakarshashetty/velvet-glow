@@ -86,7 +86,7 @@ export const Product = () => {
     <>
       <div className="product">
         <Filters />
-        <FaFilter className="filter" onClick={() => setShowMenu(!showMenu)} />
+        <FaFilter className="filter" onClick={() => {setShowMenu(!showMenu)} }/>
         {isLoading && <Loader />}
         <h2>All Products({getFilteredProducts().length})</h2>
         {getFilteredProducts().length > 0 ? (

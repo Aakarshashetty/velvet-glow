@@ -3,13 +3,15 @@
     justify-content: space-between;
     padding: 0.3rem 0.5rem;
     border: 1px solid transparent;
-    background-color: var(--secondary-color);
+    background-color: white;
     position: fixed;
     z-index: 1;
     right: 0px;
     left: 0px;
     font-size: 17px;
     font-weight: 500;
+    color: var(--primary-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .header-name {
@@ -102,7 +104,10 @@ a:hover {
 .header .search-container input:focus {
     outline: none;
 }
-
+.slide-container{
+    margin: 20px 0px;
+    margin-top: 70px;
+}
 .footer {
     padding: 0.5rem 0.5rem;
     border: 1px solid transparent;
@@ -207,6 +212,7 @@ input[type="range"]::-webkit-slider-thumb {
     color: var(--primary-color);
     font-weight: 500;
     font-size: 16px;
+    border: none;
 }
 
 .filter-panel button:hover, .filter-panel-hide button:hover {
@@ -239,31 +245,6 @@ input[type="range"]::-webkit-slider-thumb {
     text-decoration: none;
 }
 
-
-/* input[type='range'] {
-    overflow: hidden;
-    width: 150px;
-    -webkit-appearance: none;
-    margin: 10px 0px;
-    
-  }
-  
-  input[type='range']::-webkit-slider-runnable-track {
-    height: 10px;
-    -webkit-appearance: none;
-    color: var(--primary-color);
-    background-color: grey;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  }
-  
-  input[type='range']::-webkit-slider-thumb {
-    width: 10px;
-    -webkit-appearance: none;
-    height: 20px;
-    border-radius: 5px;
-    background: var(--primary-color);
-    box-shadow: -80px 0 0 80px var(--secondary-color);
-  } */
 .dots-container {
     background-color: white;
     position: absolute;

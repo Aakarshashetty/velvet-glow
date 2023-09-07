@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router";
 import { useData } from "../../contexts/data-context";
-import { NavLink } from "react-router-dom";
-
-import "./landing.css";
+import { useState } from "react";
 import Footer from "../../Components/Footer";
+import ImageSlider from "../../Components/ImageSlider";
 import Loader from "../../Components/Loader";
+import ProductCard from "../ProductPage/ProductCard";
+import "./landing.css";
 export const Landing = () => {
   const { productData, filterDispatcher, isLoading } = useData();
+  const [bestOfProducts, setBestOfProducts] = useState("best-seller")
+  const [isActive,setIsActive] = useState(true)
 
   const navigate = useNavigate();
   const categoryHandler = (categoryName) => {
@@ -23,9 +26,27 @@ export const Landing = () => {
   return (
     <>
       <div className="landing">
-        <NavLink to="/products" className="hero-image">
-          <div className="hero-image2"></div>
-        </NavLink>
+        <ImageSlider/>
+      
+        <div>
+          <div className="best-of">
+            <a onClick={(e)=>{setBestOfProducts("best-seller");e.preventDefault()}} href="/">bestsellers</a>
+            <a onClick={(e)=>{setBestOfProducts("combo");e.preventDefault()}} href="/">combos @ 30% off</a>
+            
+              {
+                bestOfProducts === "best-seller" ?<div className="best-of-products">
+                  {
+                    productData.products.map(product => product.best_seller && <ProductCard product={product} key={product._id}/>)
+                  }
+                </div> :<div className="best-of-products">
+                  {
+                    productData.products.map(product => product.category === "combo" && <ProductCard product={product} key={product._id}/>)
+                  }
+                </div>
+              }
+            
+          </div>
+        </div>
         <h1> SHOP BY CATEGORIES</h1>
 
         <div className="landing-categories">
@@ -37,7 +58,7 @@ export const Landing = () => {
               className="landing-categories-category"
             >
               <img alt="categoryImage" src={img} />
-              <h3>{categoryName}</h3>
+              <h3 className="category-name">{categoryName}</h3>
             </div>
           ))}
         </div>

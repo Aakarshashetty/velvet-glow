@@ -30,7 +30,7 @@ const ProductDetails = () => {
           <span className="original-price">₹{original_price}</span>
         </span>
         <span className="offer">{offer}</span>
-        <p className="offer">inclusive of all taxes</p>
+        <p className="offer-desc">inclusive of all taxes</p>
         <p className="description"><b>Desciption:</b> {description}</p>
         <p className="rating">{rating}★</p>
 
