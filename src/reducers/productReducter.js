@@ -11,16 +11,16 @@ export const productReducer = (productData, action) => {
         products: action.payload,
         filteredProducts: action.payload,
       };
-    case "SET_FILTER_PRODUCTS":
-      return {
-        ...productData,
-        filteredProducts: action.payload,
-      };
-    case "SET_FILTER_CATEGORIES":
-      return {
-        ...productData,
-        [action.payload]: true,
-      };
+    // case "SET_FILTER_PRODUCTS":
+    //   return {
+    //     ...productData,
+    //     filteredProducts: action.payload,
+    //   };
+    // case "SET_FILTER_CATEGORIES":
+    //   return {
+    //     ...productData,
+    //     [action.payload]: true,
+    //   };
 
     default:
       return productData;

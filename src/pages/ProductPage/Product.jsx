@@ -65,9 +65,10 @@ export const Product = () => {
       filteredProducts = productData.products;
     }
     if (byPrice) {
-      filteredProducts = filteredProducts.filter(
+      let priceFilteredProducts = filteredProducts.filter(
         ({ price }) => Number(price) <= byPrice
       );
+      filteredProducts = priceFilteredProducts.length > 0 ? priceFilteredProducts: filteredProducts
     }
     if (search !== "") {
       filteredProducts = filteredProducts.filter(({ name }) =>

@@ -14,9 +14,6 @@ export const DataContextProvider = ({ children }) => {
     categories: [],
     products: [],
     filteredProducts: [],
-    setFilterWomen: false,
-    setFilterMen: false,
-    setFilteMom: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, filterDispatcher] = useReducer(filterReducer, {

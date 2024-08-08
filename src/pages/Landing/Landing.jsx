@@ -8,8 +8,7 @@ import ProductCard from "../ProductPage/ProductCard";
 import "./landing.css";
 export const Landing = () => {
   const { productData, filterDispatcher, isLoading } = useData();
-  const [bestOfProducts, setBestOfProducts] = useState("best-seller")
-  
+  const [bestOfProducts, setBestOfProducts] = useState("best-seller");
 
   const navigate = useNavigate();
   const categoryHandler = (categoryName) => {
@@ -26,25 +25,53 @@ export const Landing = () => {
   return (
     <>
       <div className="landing">
-        <ImageSlider/>
-      
+        <ImageSlider />
+
         <div>
           <div className="best-of">
-            <a onClick={(e)=>{setBestOfProducts("best-seller");e.preventDefault()}} href="/">bestsellers</a>
-            <a onClick={(e)=>{setBestOfProducts("combo");e.preventDefault()}} href="/">combos @ 30% off</a>
-            
-              {
-                bestOfProducts === "best-seller" ?<div className="best-of-products">
-                  {
-                    productData.products.map(product => product.best_seller && <ProductCard product={product} key={product._id}/>)
-                  }
-                </div> :<div className="best-of-products">
-                  {
-                    productData.products.map(product => product.category === "combo" && <ProductCard product={product} key={product._id}/>)
-                  }
-                </div>
-              }
-            
+            <div className="nav-items">
+
+            <a
+              onClick={(e) => {
+                setBestOfProducts("best-seller");
+                e.preventDefault();
+              }}
+              href="/"
+              className={bestOfProducts === "best-seller" && "selected"}
+            >
+              Bestsellers
+            </a>
+            <a
+              onClick={(e) => {
+                setBestOfProducts("combo");
+                e.preventDefault();
+              }}
+              href="/"
+              className={bestOfProducts === "combo" && "selected"}
+            >
+              combos @ 30% off
+            </a>
+            </div>
+
+            {bestOfProducts === "best-seller" ? (
+              <div className="best-of-products">
+                {productData.products.map(
+                  (product) =>
+                    product.best_seller && (
+                      <ProductCard product={product} key={product._id} />
+                    )
+                )}
+              </div>
+            ) : (
+              <div className="best-of-products">
+                {productData.products.map(
+                  (product) =>
+                    product.category === "combo" && (
+                      <ProductCard product={product} key={product._id} />
+                    )
+                )}
+              </div>
+            )}
           </div>
         </div>
         <h1> SHOP BY CATEGORIES</h1>

@@ -58,7 +58,16 @@ export const AddNewAddress = ({
           setNewAddress({ ...newAddress, mobile: e.target.value })
         }
       />
-
+      <div>
+        Address Type:
+      <label>
+        <input type="radio"/> Home
+      </label>
+      <label>
+        <input type="radio"/> Work
+      </label>
+      </div>
+      
       <button onClick={saveAddress} className="save-button">
         Add Address
       </button>
